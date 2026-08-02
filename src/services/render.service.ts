@@ -1,4 +1,5 @@
 import browserService from "./browser.service.js";
+import type { Page } from "puppeteer-core";
 
 export interface RenderOptions {
   html: string;
@@ -14,7 +15,7 @@ class RenderService {
   }: RenderOptions): Promise<Buffer> {
     let browser = await browserService.getBrowser();
 
-    let page: Awaited<ReturnType<import("puppeteer").Browser["newPage"]>> | null = null;
+    let page: Page | null = null;
 
     // Try to create a page; if the CDP connection was closed, restart browser once and retry.
     try {

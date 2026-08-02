@@ -1,23 +1,18 @@
-import puppeteer, { Browser } from "puppeteer";
+import puppeteer, { Browser } from "puppeteer-core";
+import chromium from "@sparticuz/chromium";
 
 class BrowserService {
   private browser: Browser | null = null;
 
   public async init(): Promise<void> {
-    if (this.browser) {
-      return;
-    }
+    if (this.browser) return;
 
     console.log("🚀 Launching Chromium...");
 
     this.browser = await puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
       headless: true,
-  args: [
-    "--no-sandbox",
-    "--disable-setuid-sandbox",
-    "--disable-dev-shm-usage",
-  ],
-
       defaultViewport: {
         width: 1080,
         height: 1080,
@@ -28,24 +23,19 @@ class BrowserService {
     console.log("✅ Chromium Started");
   }
 
-  public async getBrowser(): Promise<Browser> {
+  public getBrowser(): Browser {
     if (!this.browser) {
-      await this.init();
+      throw new Error("Browser is not initialized");
     }
 
-    return this.browser!;
+    return this.browser;
   }
 
   public async close(): Promise<void> {
-    if (!this.browser) {
-      return;
+    if (this.browser) {
+      await this.browser.close();
+      this.browser = null;
     }
-
-    await this.browser.close();
-
-    this.browser = null;
-
-    console.log("🛑 Chromium Closed");
   }
 }
 
