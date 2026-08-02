@@ -80,21 +80,24 @@ inset:0;
 background:
 linear-gradient(
 180deg,
-rgba(0,0,0,.08) 0%,
-rgba(0,0,0,.15) 35%,
-rgba(0,0,0,.45) 65%,
-rgba(0,0,0,.88) 100%
+rgba(0,0,0,.35) 0%,
+rgba(0,0,0,.05) 18%,
+rgba(0,0,0,.05) 45%,
+rgba(0,0,0,.55) 68%,
+rgba(0,0,0,.95) 100%
 );
 
 }
+
+/* ---- top bar ---- */
 
 .top{
 
 position:absolute;
 
-top:40px;
-left:40px;
-right:40px;
+top:36px;
+left:36px;
+right:36px;
 
 display:flex;
 
@@ -106,79 +109,153 @@ z-index:10;
 
 }
 
-.logo{
+.brand{
+
+display:flex;
+
+align-items:center;
+
+gap:16px;
+
+}
+
+.brand-avatar{
+
+width:64px;
+height:64px;
+
+border-radius:50%;
 
 background:white;
 
-padding:18px 34px;
+display:flex;
 
-border-radius:999px;
+align-items:center;
 
-font-size:28px;
+justify-content:center;
+
+font-size:26px;
 
 font-weight:800;
 
 color:#111;
 
+overflow:hidden;
+
+}
+
+.brand-name{
+
+color:white;
+
+font-size:30px;
+
+font-weight:700;
+
+text-shadow:0 2px 6px rgba(0,0,0,.5);
+
+}
+
+.top-right{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
 }
 
 .page{
 
-padding:12px 22px;
+padding:10px 22px;
 
 border-radius:999px;
 
-background:rgba(255,255,255,.18);
+background:rgba(0,0,0,.35);
 
-backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.25);
 
 color:white;
 
-font-size:26px;
+font-size:24px;
 
-font-weight:700;
+font-weight:600;
 
 }
+
+.menu-dots{
+
+color:white;
+
+font-size:32px;
+
+font-weight:800;
+
+line-height:1;
+
+}
+
+/* ---- decorative badge icon ---- */
+
+.badge{
+
+position:absolute;
+
+top:160px;
+left:40px;
+
+width:96px;
+height:96px;
+
+border-radius:50%;
+
+background:white;
+
+z-index:10;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:10px;
+
+}
+
+.badge .eye{
+
+width:22px;
+height:22px;
+
+border-radius:50%;
+
+background:#111;
+
+}
+
+/* ---- content ---- */
 
 .content{
 
 position:absolute;
 
-left:45px;
-right:45px;
+left:42px;
+right:42px;
 bottom:70px;
 
 z-index:20;
 
 }
 
-.category{
-
-display:inline-block;
-
-margin-bottom:28px;
-
-padding:12px 24px;
-
-background:#ff3b30;
-
-border-radius:999px;
-
-color:white;
-
-font-size:24px;
-
-font-weight:700;
-
-}
-
 .title{
 
-font-size:72px;
+font-size:56px;
 
 font-weight:800;
 
-line-height:1.18;
+line-height:1.28;
 
 color:#111;
 
@@ -190,7 +267,7 @@ display:inline;
 
 background:white;
 
-padding:8px 18px;
+padding:6px 16px;
 
 box-decoration-break:clone;
 -webkit-box-decoration-break:clone;
@@ -199,13 +276,13 @@ box-decoration-break:clone;
 
 .summary{
 
-margin-top:40px;
+margin-top:32px;
 
-font-size:36px;
+font-size:34px;
 
-line-height:1.6;
+line-height:1.5;
 
-font-weight:500;
+font-weight:700;
 
 color:white;
 
@@ -213,12 +290,12 @@ display:-webkit-box;
 
 -webkit-box-orient:vertical;
 
--webkit-line-clamp:3;
+-webkit-line-clamp:4;
 
 overflow:hidden;
 
 text-shadow:
-0 2px 8px rgba(0,0,0,.45);
+0 2px 8px rgba(0,0,0,.5);
 
 }
 
@@ -239,21 +316,24 @@ alt="News"
 
 <div class="top">
 
-<div class="logo">
-AI NEWS
+<div class="brand">
+<div class="brand-avatar">N</div>
+<div class="brand-name">newsscoop</div>
 </div>
 
-<div class="page">
-1/1
+<div class="top-right">
+<div class="page">1/1</div>
+<div class="menu-dots">&#8942;</div>
 </div>
 
+</div>
+
+<div class="badge">
+<div class="eye"></div>
+<div class="eye"></div>
 </div>
 
 <div class="content">
-
-<div class="category">
-BREAKING NEWS
-</div>
 
 <h1 class="title">
 <span>${title}</span>
