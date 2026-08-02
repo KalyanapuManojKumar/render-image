@@ -9,36 +9,34 @@ class CloudinaryService {
     publicId: string;
   }> {
     return new Promise((resolve, reject) => {
-      // cloudinary.uploader.upload_stream types are not reliable across
-      // environments; cast to `any` to call `.end()` without TS errors.
-      const uploader: any = cloudinary.uploader;
+      cloudinary.uploader
+        .upload_stream(
+          {
+            folder,
+            resource_type: "image",
+            format: "png",
+          },
+          (error, result) => {
+            if (error || !result) {
+              const message =
+                error instanceof Error
+                  ? error.message
+                  : "Cloudinary upload failed";
 
-      const stream = uploader.upload_stream(
-        {
-          folder,
-          resource_type: "image",
-          format: "png",
-        },
-        (error: any, result: any) => {
-          if (error || !result) {
-            const message =
-              error instanceof Error ? error.message : "Cloudinary upload failed";
+              return reject(
+                new Error(
+                  `${message}. Check your Cloudinary credentials and ensure the account is configured correctly.`,
+                ),
+              );
+            }
 
-            return reject(
-              new Error(
-                `${message}. Check your Cloudinary credentials and ensure the account is configured correctly.`,
-              ),
-            );
-          }
-
-          resolve({
-            url: result.secure_url,
-            publicId: result.public_id,
-          });
-        },
-      );
-
-      stream.end(image);
+            resolve({
+              url: result.secure_url,
+              publicId: result.public_id,
+            });
+          },
+        )
+        .end(image);
     });
   }
 }
