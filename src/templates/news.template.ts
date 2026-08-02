@@ -8,15 +8,10 @@ export function generateNewsTemplate({
   return `
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-<meta charset="UTF-8"/>
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,173 +21,218 @@ export function generateNewsTemplate({
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
 
-    width:1080px;
-    height:1080px;
+width:1080px;
+height:1350px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+font-family:'Poppins',sans-serif;
 
-    background:#f5f5f5;
+background:#111;
 
-    font-family:"Poppins",sans-serif;
+overflow:hidden;
 
 }
 
 .container{
 
-    width:1000px;
-    height:1000px;
+position:relative;
 
-    background:#ffffff;
+width:100%;
+height:100%;
 
-    border-radius:32px;
-
-    overflow:hidden;
-
-    display:flex;
-
-    flex-direction:column;
-
-    box-shadow:
-    0 30px 70px rgba(0,0,0,.25);
+overflow:hidden;
 
 }
 
 .image{
 
-    height:58%;
+position:absolute;
 
-    overflow:hidden;
+top:0;
+left:0;
 
-    position:relative;
+width:100%;
+height:100%;
 
 }
 
 .image img{
 
-    width:100%;
-    height:100%;
+width:100%;
+height:100%;
 
-    object-fit:cover;
+object-fit:cover;
 
 }
 
-.image::after{
+.overlay{
 
-    content:"";
+position:absolute;
 
-    position:absolute;
+inset:0;
 
-    left:0;
-    right:0;
-    bottom:0;
+background:
+linear-gradient(
+180deg,
+rgba(0,0,0,.15) 0%,
+rgba(0,0,0,.15) 30%,
+rgba(0,0,0,.55) 70%,
+rgba(0,0,0,.92) 100%
+);
 
-    height:180px;
+}
 
-    background:
+.header{
 
-    linear-gradient(
-        transparent,
-        rgba(0,0,0,.55)
-    );
+position:absolute;
+
+top:40px;
+left:40px;
+right:40px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+z-index:2;
+
+}
+
+.logo{
+
+background:#ffffff;
+
+color:#000;
+
+padding:16px 26px;
+
+border-radius:50px;
+
+font-size:26px;
+
+font-weight:800;
+
+letter-spacing:1px;
+
+}
+
+.page{
+
+background:rgba(255,255,255,.18);
+
+color:white;
+
+padding:10px 20px;
+
+border-radius:999px;
+
+font-size:24px;
+
+font-weight:600;
+
+backdrop-filter:blur(12px);
 
 }
 
 .content{
 
-    flex:1;
+position:absolute;
 
-    display:flex;
+left:50px;
+right:50px;
+bottom:60px;
 
-    flex-direction:column;
+z-index:2;
 
-    justify-content:space-between;
+}
 
-    padding:50px;
+.category{
+
+display:inline-block;
+
+background:#ff3b30;
+
+color:white;
+
+padding:10px 22px;
+
+border-radius:999px;
+
+font-size:24px;
+
+font-weight:700;
+
+margin-bottom:30px;
 
 }
 
 .title{
 
-    font-size:48px;
+display:inline;
 
-    line-height:1.25;
+background:white;
 
-    font-weight:700;
+color:#111;
 
-    color:#111827;
+font-size:68px;
 
-    display:-webkit-box;
+font-weight:800;
 
-    -webkit-line-clamp:3;
+line-height:1.18;
 
-    -webkit-box-orient:vertical;
+padding:10px 18px;
 
-    overflow:hidden;
+box-decoration-break:clone;
+-webkit-box-decoration-break:clone;
 
 }
 
 .summary{
 
-    margin-top:30px;
+margin-top:45px;
 
-    font-size:28px;
+font-size:34px;
 
-    line-height:1.7;
+font-weight:500;
 
-    color:#4b5563;
+line-height:1.55;
 
-    display:-webkit-box;
+color:white;
 
-    -webkit-line-clamp:5;
+display:-webkit-box;
 
-    -webkit-box-orient:vertical;
+-webkit-line-clamp:3;
+-webkit-box-orient:vertical;
 
-    overflow:hidden;
+overflow:hidden;
 
 }
 
 .footer{
 
-    display:flex;
+margin-top:45px;
 
-    justify-content:space-between;
+display:flex;
 
-    align-items:center;
+justify-content:space-between;
 
-}
+align-items:center;
 
-.badge{
+color:white;
 
-    background:#2563eb;
+font-size:26px;
 
-    color:white;
+font-weight:600;
 
-    padding:12px 24px;
-
-    border-radius:999px;
-
-    font-size:22px;
-
-    font-weight:700;
-
-}
-
-.brand{
-
-    font-size:24px;
-
-    color:#6b7280;
-
-    font-weight:600;
+opacity:.9;
 
 }
 
@@ -204,50 +244,51 @@ body{
 
 <div class="container">
 
-    <div class="image">
+<div class="image">
+<img src="${image}">
+</div>
 
-        <img
-            src="${image}"
-            alt="News"
-        />
+<div class="overlay"></div>
 
-    </div>
+<div class="header">
 
-    <div class="content">
+<div class="logo">
+AI NEWS
+</div>
 
-        <div>
+<div class="page">
+1 / 1
+</div>
 
-            <h1 class="title">
+</div>
 
-                ${title}
+<div class="content">
 
-            </h1>
+<div class="category">
+BREAKING NEWS
+</div>
 
-            <p class="summary">
+<h1 class="title">
+${title}
+</h1>
 
-                ${summary}
+<p class="summary">
+${summary}
+</p>
 
-            </p>
+<div class="footer">
 
-        </div>
+<span>
+www.ainews.com
+</span>
 
-        <div class="footer">
+<span>
+Powered by AI
+</span>
 
-            <span class="badge">
+</div>
 
-                BREAKING NEWS
-
-            </span>
-
-            <span class="brand">
-
-                AI NEWS
-
-            </span>
-
-        </div>
-
-    </div>
+</div>
 
 </div>
 
