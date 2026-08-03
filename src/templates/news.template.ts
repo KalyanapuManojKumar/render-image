@@ -8,23 +8,15 @@ export function generateNewsTemplate({
   return `
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
-<meta charset="UTF-8"/>
-
-<meta
-  name="viewport"
-  content="width=device-width, initial-scale=1.0"
-/>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-rel="stylesheet"
-/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -34,17 +26,16 @@ padding:0;
 box-sizing:border-box;
 }
 
-html,
 body{
 
 width:1080px;
 height:1350px;
 
+font-family:'Poppins',sans-serif;
+
+background:#111;
+
 overflow:hidden;
-
-font-family:"Poppins",sans-serif;
-
-background:#000;
 
 }
 
@@ -63,7 +54,11 @@ overflow:hidden;
 
 position:absolute;
 
-inset:0;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
 
 }
 
@@ -85,11 +80,10 @@ inset:0;
 background:
 linear-gradient(
 180deg,
-rgba(0,0,0,0) 0%,
-rgba(0,0,0,.10) 35%,
-rgba(0,0,0,.45) 60%,
-rgba(0,0,0,.80) 78%,
-rgba(0,0,0,.96) 100%
+rgba(0,0,0,.15) 0%,
+rgba(0,0,0,.15) 30%,
+rgba(0,0,0,.55) 70%,
+rgba(0,0,0,.92) 100%
 );
 
 }
@@ -108,25 +102,25 @@ justify-content:space-between;
 
 align-items:center;
 
-z-index:20;
+z-index:2;
 
 }
 
 .logo{
 
-background:white;
+background:#ffffff;
 
-padding:14px 28px;
+color:#000;
+
+padding:16px 26px;
 
 border-radius:50px;
 
-font-size:24px;
+font-size:26px;
 
 font-weight:800;
 
-color:#111;
-
-letter-spacing:.5px;
+letter-spacing:1px;
 
 }
 
@@ -134,17 +128,17 @@ letter-spacing:.5px;
 
 background:rgba(255,255,255,.18);
 
-backdrop-filter:blur(12px);
-
 color:white;
 
-padding:12px 22px;
+padding:10px 20px;
 
 border-radius:999px;
 
 font-size:24px;
 
-font-weight:700;
+font-weight:600;
+
+backdrop-filter:blur(12px);
 
 }
 
@@ -154,37 +148,47 @@ position:absolute;
 
 left:50px;
 right:50px;
-bottom:100px;
+bottom:60px;
 
-z-index:10;
+z-index:2;
+
+}
+
+.category{
+
+display:inline-block;
+
+background:#ff3b30;
+
+color:white;
+
+padding:10px 22px;
+
+border-radius:999px;
+
+font-size:24px;
+
+font-weight:700;
+
+margin-bottom:30px;
 
 }
 
 .title{
 
-display:-webkit-box;
-
--webkit-line-clamp:3;
-
--webkit-box-orient:vertical;
-
-overflow:hidden;
-
-font-size:52px;
-
-font-weight:800;
-
-line-height:1.28;
-
-color:#111;
-
-}
-
-.title span{
+display:inline;
 
 background:white;
 
-padding:8px 14px;
+color:#111;
+
+font-size:68px;
+
+font-weight:800;
+
+line-height:1.18;
+
+padding:10px 18px;
 
 box-decoration-break:clone;
 -webkit-box-decoration-break:clone;
@@ -193,28 +197,42 @@ box-decoration-break:clone;
 
 .summary{
 
-margin-top:26px;
+margin-top:45px;
 
-font-size:26px;
+font-size:34px;
 
 font-weight:500;
 
-line-height:1.5;
+line-height:1.55;
 
 color:white;
 
-text-shadow:
-0 2px 10px rgba(0,0,0,.8);
-
 display:-webkit-box;
 
--webkit-line-clamp:4;
-
+-webkit-line-clamp:3;
 -webkit-box-orient:vertical;
 
 overflow:hidden;
 
-max-width:900px;
+}
+
+.footer{
+
+margin-top:45px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+color:white;
+
+font-size:26px;
+
+font-weight:600;
+
+opacity:.9;
 
 }
 
@@ -227,12 +245,7 @@ max-width:900px;
 <div class="container">
 
 <div class="image">
-
-<img
-src="${image}"
-alt="News"
-/>
-
+<img src="${image}">
 </div>
 
 <div class="overlay"></div>
@@ -240,32 +253,40 @@ alt="News"
 <div class="header">
 
 <div class="logo">
-
 AI NEWS
-
 </div>
 
 <div class="page">
-
-1/1
-
+1 / 1
 </div>
 
 </div>
 
 <div class="content">
 
+<div class="category">
+BREAKING NEWS
+</div>
+
 <h1 class="title">
-
-<span>${title}</span>
-
+${title}
 </h1>
 
 <p class="summary">
-
 ${summary}
-
 </p>
+
+<div class="footer">
+
+<span>
+www.ainews.com
+</span>
+
+<span>
+Powered by AI
+</span>
+
+</div>
 
 </div>
 
