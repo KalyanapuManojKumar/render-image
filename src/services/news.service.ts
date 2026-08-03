@@ -27,7 +27,7 @@ class NewsService {
     const buffer = await renderService.render({
       html,
       width: 1080,
-      height: 1800,
+      height: 1600,
     });
 
     return cloudinaryService.uploadImage(buffer);
