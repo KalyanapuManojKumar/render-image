@@ -1,11 +1,4 @@
-import type { NewsRequest } from "../validators/news.validator.js";
 
-export function generateNewsTemplate({
-  title,
-  summary,
-  image,
-}: NewsRequest): string {
-  return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -245,7 +238,7 @@ opacity:.9;
 <div class="container">
 
 <div class="image">
-<img src="${image}">
+<img src="https://cdn.antaranews.com/cache/800x533/2026/08/03/1002579977.jpg">
 </div>
 
 <div class="overlay"></div>
@@ -269,11 +262,11 @@ BREAKING NEWS
 </div>
 
 <h1 class="title">
-${title}
+Kapendam: Empat jenazah korban KKB teridentifikasi
 </h1>
 
 <p class="summary">
-${summary}
+Kepala Penerangan Kodam XVII Cenderawasih Kolonel Infanteri Tri Purwanto di Jayapura, Senin, mengatakan sebanyak ...
 </p>
 
 <div class="footer">
@@ -295,5 +288,3 @@ Powered by AI
 </body>
 
 </html>
-`;
-}
